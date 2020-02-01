@@ -13,6 +13,6 @@ csrf.create = function() {
 
 csrf.validate = function(token) {
   return tokens.some(storedToken => {
-    return storedToken === token;
+    return crypto.timingSafeEqual(storedToken, token);
   });
 };
